@@ -92,4 +92,7 @@ public class LogementBusiness {
         this.logements = logements;
     }
 
+
+
+
 }

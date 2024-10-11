@@ -23,27 +23,27 @@ public class LogementRessources {
                 .entity("Failed to add logement").build();
     }
 
+//    @GET
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public   Response   getListLogements()
+//    {
+//        if(logementBusiness.getLogements().size()!=0){
+//            return Response.status(Response.Status.OK).entity(logementBusiness.getLogements()).build();
+//        }
+//        return Response.status(Response.Status.NOT_FOUND).entity("La liste est vide").build();
+//
+//    }
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public   Response   getListLogements()
-    {
-        if(logementBusiness.getLogements().size()!=0){
+    public Response getLogementsByDelegation(@QueryParam("delegation") String delegation) {
+        if(delegation==null)
             return Response.status(Response.Status.OK).entity(logementBusiness.getLogements()).build();
-        }
-        return Response.status(Response.Status.NOT_FOUND).entity("La liste est vide").build();
-
-    }
-
-    @GET
-    @Path("/{delegation}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getLogementsByDelegation(@PathParam("delegation") String delegation) {
         List<Logement> logements = logementBusiness.getLogementsByDeleguation(delegation);
-
         if (logements != null && !logements.isEmpty()) {
             return Response.status(Response.Status.OK).entity(logements).build();
         } else {
-            return Response.status(Response.Status.NOT_FOUND).entity("Aucun logement trouvé pour la délégation: " + delegation).build();
+            return Response.status(Response.Status.NOT_FOUND).build();
         }
     }
 
