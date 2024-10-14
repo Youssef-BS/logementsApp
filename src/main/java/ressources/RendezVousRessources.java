@@ -21,7 +21,7 @@ public class RendezVousRessources {
         rendezVousBusiness.addRendezVous(r);
         RendezVous r2 = new RendezVous(2, "30-12-2020", "20:30",
                 logementBusiness.getLogementsByReference(5), "523564078");
-        rendezVousBusiness.addRendezVous(r);
+        rendezVousBusiness.addRendezVous(r2);
     }
     @POST
     @Consumes(MediaType.APPLICATION_JSON)

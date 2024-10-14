@@ -23,17 +23,6 @@ public class LogementRessources {
                 .entity("Failed to add logement").build();
     }
 
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public   Response   getListLogements()
-//    {
-//        if(logementBusiness.getLogements().size()!=0){
-//            return Response.status(Response.Status.OK).entity(logementBusiness.getLogements()).build();
-//        }
-//        return Response.status(Response.Status.NOT_FOUND).entity("La liste est vide").build();
-//
-//    }
-
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getLogementsByDelegation(@QueryParam("delegation") String delegation) {
@@ -53,9 +42,9 @@ public class LogementRessources {
         boolean isDeleted = logementBusiness.deleteLogement(reference);
 
         if (isDeleted) {
-            return Response.status(Response.Status.OK).entity("Logement supprimé avec succès").build();
+            return Response.status(Response.Status.OK).build();
         } else {
-            return Response.status(Response.Status.NOT_FOUND).entity("Logement non trouvé avec l'identifiant: " + reference).build();
+            return Response.status(Response.Status.NOT_FOUND).build();
         }
     }
 
@@ -83,6 +72,7 @@ public class LogementRessources {
             return Response.status(Response.Status.NOT_FOUND).entity("Logement non trouvé avec la référence: " + reference).build();
         }
     }
+
 }
 
 
